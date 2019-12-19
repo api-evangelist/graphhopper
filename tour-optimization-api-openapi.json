@@ -1,0 +1,430 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0",
+        "title": "Tour Optimization API",
+        "description": "Our Tour Optimization API solves the so called vehicle routing problem fast. It calculates an optimal tour for a set of vehicles, services and constraints",
+        "termsOfService": "http:\/\/exmple.com\/license\/"
+    },
+    "servers": [
+        "http:\/\/graphhopper.com\/api\/1\/vrp"
+    ],
+    "paths": {
+        "\/optimize": {
+            "post": {
+                "summary": "Solves large routing problems",
+                "description": "This endpoint solves large problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.\n",
+                "operationId": "PostVrp",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "your API key"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A jobId you can use to retrieve your solution from server - see solution endpoint.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/JobId"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/solution\/{jobId}": {
+            "get": {
+                "summary": "Return the solution associated to the jobId",
+                "description": "This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent.\n",
+                "operationId": "GetSolution",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "your API key"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "Request solution with jobId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A jobId you can use to retrieve your solution from server - see solution endpoint.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/JobId"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "JobId": {
+                "type": "object",
+                "properties": {
+                    "job_id": {
+                        "description": "unique id for your job\/request with which you can fetch your solution",
+                        "type": "string"
+                    }
+                }
+            },
+            "Request": {
+                "type": "object",
+                "properties": {
+                    "vehicles": {
+                        "description": "An array of vehicles that can be employed",
+                        "type": "array"
+                    },
+                    "vehicle_types": {
+                        "description": "An array of vehicle types",
+                        "type": "array"
+                    },
+                    "services": {
+                        "description": "An array of services",
+                        "type": "array"
+                    },
+                    "shipments": {
+                        "description": "An array of shipments",
+                        "type": "array"
+                    }
+                }
+            },
+            "vehicles": {
+                "type": "array"
+            },
+            "vehicle_types": {
+                "type": "array"
+            },
+            "services": {
+                "type": "array"
+            },
+            "shipments": {
+                "type": "array"
+            },
+            "Vehicle": {
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "description": "Unique identifier of vehicle",
+                        "type": "string"
+                    },
+                    "type_id": {
+                        "description": "Unique identifier referring to the available vehicle types",
+                        "type": "string"
+                    },
+                    "start_address": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "end_address": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "return_to_depot": {
+                        "description": "Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.",
+                        "type": "boolean"
+                    },
+                    "earliest_start": {
+                        "description": "earliest start of vehicle at its start location",
+                        "type": "integer"
+                    },
+                    "latest_end": {
+                        "description": "latest end of vehicle at its end location",
+                        "type": "integer"
+                    },
+                    "skills": {
+                        "description": "array of skills",
+                        "type": "array"
+                    }
+                }
+            },
+            "start_address": {
+                "type": "object"
+            },
+            "end_address": {
+                "type": "object"
+            },
+            "skills": {
+                "type": "array"
+            },
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "location_id": {
+                        "description": "Unique identifier of location",
+                        "type": "string"
+                    },
+                    "lon": {
+                        "description": "longitude",
+                        "type": "number"
+                    },
+                    "lat": {
+                        "description": "latitude",
+                        "type": "number"
+                    }
+                }
+            },
+            "VehicleType": {
+                "type": "object",
+                "properties": {
+                    "type_id": {
+                        "description": "Unique identifier referring to the available vehicle types",
+                        "type": "string"
+                    },
+                    "profile": {
+                        "description": "Profile of vehicle type",
+                        "type": "string"
+                    },
+                    "distance_dependent_costs": {
+                        "description": "cost factor of distance",
+                        "type": "number"
+                    },
+                    "time_dependent_costs": {
+                        "description": "cost factor of time",
+                        "type": "number"
+                    },
+                    "capacity": {
+                        "description": "array of capacity dimensions",
+                        "type": "array"
+                    }
+                }
+            },
+            "capacity": {
+                "type": "array"
+            },
+            "Service": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier of service",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "type of service",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "name of service",
+                        "type": "string"
+                    },
+                    "Address": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "address": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "duration": {
+                        "description": "duration of service, i.e. time in ms the corresponding activity takes",
+                        "type": "integer"
+                    },
+                    "time_windows": {
+                        "description": "array of time windows. currently, only a single time window is allowed",
+                        "type": "array"
+                    },
+                    "size": {
+                        "description": "array of capacity dimensions",
+                        "type": "array"
+                    },
+                    "required_skills": {
+                        "description": "array of required skills",
+                        "type": "array"
+                    }
+                }
+            },
+            "time_windows": {
+                "type": "array"
+            },
+            "size": {
+                "type": "array"
+            },
+            "required_skills": {
+                "type": "array"
+            },
+            "Shipment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier of service",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "name of service",
+                        "type": "string"
+                    },
+                    "pickup": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "delivery": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "size": {
+                        "description": "array of capacity dimensions",
+                        "type": "array"
+                    },
+                    "required_skills": {
+                        "description": "array of required skills",
+                        "type": "array"
+                    }
+                }
+            },
+            "pickup": {
+                "type": "object"
+            },
+            "delivery": {
+                "type": "object"
+            },
+            "Stop": {
+                "type": "object",
+                "properties": {
+                    "Address": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "address": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "duration": {
+                        "description": "duration of service, i.e. time in ms the corresponding activity takes",
+                        "type": "integer"
+                    },
+                    "time_windows": {
+                        "description": "array of time windows. currently, only a single time window is allowed",
+                        "type": "array"
+                    }
+                }
+            },
+            "TimeWindow": {
+                "type": "object",
+                "properties": {
+                    "earliest": {
+                        "description": "earliest start time of corresponding activity",
+                        "type": "integer"
+                    },
+                    "latest": {
+                        "description": "latest start time of corresponding activity",
+                        "type": "integer"
+                    }
+                }
+            },
+            "LargeResponse": {
+                "type": "object",
+                "properties": {
+                    "job_id": {
+                        "description": "unique id for your job\/request with which you can fetch your solution",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "indicates the current status of the job",
+                        "type": "string"
+                    },
+                    "waiting_in_queue": {
+                        "description": "waiting time in ms",
+                        "type": "integer"
+                    },
+                    "processing_time": {
+                        "description": "processing time in ms. if job is still waiting in queue, processing_time is 0",
+                        "type": "integer"
+                    },
+                    "solution": {
+                        "description": "the solution. only available if status field indicates finished",
+                        "type": ""
+                    }
+                }
+            },
+            "solution": {
+                "type": "object",
+                "properties": {
+                    "costs": {
+                        "description": "overall costs of solution",
+                        "type": "integer"
+                    },
+                    "distance": {
+                        "description": "overall travel distance in meters",
+                        "type": "integer"
+                    },
+                    "time": {
+                        "description": "overall travel time in ms",
+                        "type": "integer"
+                    },
+                    "no_unassigned": {
+                        "description": "number of jobs that could not be assigned to final solution",
+                        "type": "integer"
+                    },
+                    "routes": {
+                        "description": "An array of routes",
+                        "type": "array"
+                    },
+                    "unassigned": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "routes": {
+                "type": "array"
+            },
+            "unassigned": {
+                "type": "object"
+            },
+            "Route": {
+                "type": "object",
+                "properties": {
+                    "vehicle_id": {
+                        "description": "Unique identifier of vehicle",
+                        "type": "string"
+                    },
+                    "activities": {
+                        "description": "array of activities",
+                        "type": "array"
+                    }
+                }
+            },
+            "activities": {
+                "type": "array"
+            },
+            "Activity": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "type of service",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Unique identifier of service",
+                        "type": "string"
+                    },
+                    "location_id": {
+                        "description": "Unique identifier of location",
+                        "type": "string"
+                    },
+                    "arr_time": {
+                        "description": "arrival time at this activity in ms",
+                        "type": "integer"
+                    },
+                    "end_time": {
+                        "description": "end time of and thus departure time at this activity",
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}
