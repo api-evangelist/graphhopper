@@ -1,0 +1,89 @@
+{
+    "id": "d76bb7a4d944c5ed53a56e69daaeea45",
+    "name": "Route Optimization",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "b79d07f9aa33872394bd9dde31ecf7c0",
+            "name": "Solves vehicle routing problems",
+            "url": "httpsgraphhopper.com\/api\/1\/vrp\/optimize",
+            "description": "This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "key",
+                    "description": "your API key",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "body",
+                    "description": "Request object that contains the problem to be solved",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "d76bb7a4d944c5ed53a56e69daaeea45",
+            "rawModeData": ""
+        },
+        {
+            "id": "91708d80c3ca15e0d42d85d565ec4ef1",
+            "name": "Return the solution associated to the jobId",
+            "url": "httpsgraphhopper.com\/api\/1\/vrp\/solution\/{jobId}",
+            "description": "This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "key",
+                    "description": "your API key",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "jobId",
+                    "description": "Request solution with jobId",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "d76bb7a4d944c5ed53a56e69daaeea45",
+            "rawModeData": ""
+        }
+    ]
+}
