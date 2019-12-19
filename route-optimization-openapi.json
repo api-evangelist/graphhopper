@@ -1,0 +1,500 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0",
+        "title": "Route Optimization",
+        "description": "Our Route Optimization API solves the so called vehicle routing problem fast. It calculates an optimal tour for a set of vehicles, services and constraints",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsgraphhopper.com\/api\/1\/vrp"
+    ],
+    "paths": {
+        "\/optimize": {
+            "post": {
+                "summary": "Solves vehicle routing problems",
+                "description": "This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.\n",
+                "operationId": "PostVrp",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "your API key"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Request object that contains the problem to be solved"
+                    }
+                ]
+            }
+        },
+        "\/solution\/{jobId}": {
+            "get": {
+                "summary": "Return the solution associated to the jobId",
+                "description": "This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent.\n",
+                "operationId": "GetSolution",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "your API key"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "Request solution with jobId"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Activity": {
+                "type": "object",
+                "properties": {
+                    "arr_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "distance": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "driving_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "end_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "load_after": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "load_before": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "location_id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "waiting_time": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "lat": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "location_id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lon": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Algorithm": {
+                "type": "object",
+                "properties": {
+                    "objective": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "problem_type": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Break": {
+                "type": "object",
+                "properties": {
+                    "duration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "earliest": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "initial_driving_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "latest": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "max_driving_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "possible_split": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CostMatrix": {
+                "type": "object",
+                "properties": {
+                    "profile": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "JobId": {
+                "type": "object",
+                "properties": {
+                    "job_id": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Objective": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Relation": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "vehicle_id": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Request": {
+                "type": "object",
+                "properties": {
+                    "cost_matrices": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "objectives": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "relations": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "services": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "shipments": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "vehicle_types": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "vehicles": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Response": {
+                "type": "object",
+                "properties": {
+                    "copyrights": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "job_id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "processing_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "waiting_in_queue": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Route": {
+                "type": "object",
+                "properties": {
+                    "activities": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "completion_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "distance": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "transport_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "vehicle_id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "waiting_time": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Service": {
+                "type": "object",
+                "properties": {
+                    "allowed_vehicles": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "duration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "priority": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "required_skills": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "size": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "time_windows": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Shipment": {
+                "type": "object",
+                "properties": {
+                    "allowed_vehicles": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "priority": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "required_skills": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "size": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Solution": {
+                "type": "object",
+                "properties": {
+                    "costs": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "distance": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "max_operation_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "no_unassigned": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "no_vehicles": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "routes": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "transport_time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "unassigned": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "waiting_time": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Stop": {
+                "type": "object",
+                "properties": {
+                    "duration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "time_windows": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "TimeWindow": {
+                "type": "object",
+                "properties": {
+                    "earliest": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "latest": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Vehicle": {
+                "type": "object",
+                "properties": {
+                    "earliest_start": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "latest_end": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "return_to_depot": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "skills": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type_id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "vehicle_id": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "VehicleType": {
+                "type": "object",
+                "properties": {
+                    "capacity": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "profile": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "service_time_factor": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "speed_factor": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type_id": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            }
+        }
+    }
+}
