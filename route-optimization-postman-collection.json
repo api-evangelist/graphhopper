@@ -1,5 +1,5 @@
 {
-    "id": "d76bb7a4d944c5ed53a56e69daaeea45",
+    "id": "24c4cac28ed3bb44a6bf2761f871ce7c",
     "name": "Route Optimization",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "b79d07f9aa33872394bd9dde31ecf7c0",
+            "id": "366cdaf5bbd35883151c0b6aded37c5a",
             "name": "Solves vehicle routing problems",
             "url": "httpsgraphhopper.com\/api\/1\/vrp\/optimize",
             "description": "This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.\n",
@@ -44,11 +44,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "d76bb7a4d944c5ed53a56e69daaeea45",
+            "collectionId": "24c4cac28ed3bb44a6bf2761f871ce7c",
             "rawModeData": ""
         },
         {
-            "id": "91708d80c3ca15e0d42d85d565ec4ef1",
+            "id": "3beaaf6c3a425125f4b39a59b843d208",
             "name": "Return the solution associated to the jobId",
             "url": "httpsgraphhopper.com\/api\/1\/vrp\/solution\/{jobId}",
             "description": "This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent.\n",
@@ -82,7 +82,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "d76bb7a4d944c5ed53a56e69daaeea45",
+            "collectionId": "24c4cac28ed3bb44a6bf2761f871ce7c",
             "rawModeData": ""
         }
     ]
