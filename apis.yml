@@ -23,10 +23,14 @@ apis:
       - type: Documentation
         url: https://docs.graphhopper.com/
 common:
+  - type: DomainSecurity
+    url: security/graphhopper-domain-security.yml
   - type: Website
     url: https://docs.graphhopper.com/
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+  - url: https://www.graphhopper.com/blog/feed/
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
