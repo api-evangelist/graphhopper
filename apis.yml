@@ -39,7 +39,6 @@ apis:
   - name: GraphHopper
     description: "A-to-B routing with turn-by-turn instructions"
     humanURL: https://docs.graphhopper.com/
-    baseURL: https://docs.graphhopper.com/
     tags:
       - Transportation
     properties:
